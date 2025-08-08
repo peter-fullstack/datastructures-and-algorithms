@@ -2,7 +2,8 @@
 {
     public class AlgorithmsDataStructureImplementations
     {
-        // Assumes the array is sorted
+        // Assumes the array is sorted - returns the index 
+        // at which the search value is found
         public static int binary_search(int[] array, int low, int hi, int searchValue)
         {
             do
@@ -75,7 +76,6 @@
                     }
                 }
             }
-
         }
     }
 }

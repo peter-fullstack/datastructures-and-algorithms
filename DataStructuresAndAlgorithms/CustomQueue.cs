@@ -9,10 +9,12 @@
         {
             _head = null;
             _tail = null;
-            length = 0;
+            _length = 0;
         }
 
-        public int length { get; private set; }
+        private int _length;
+
+        public int Length {  get { return _length; } }
 
         public void enqueue(T value)
         {
@@ -25,11 +27,25 @@
             else
             {
                 // add new node to the end of the list
+                if(_head == null)
+                {
+                    _head = newNode;
+                    _tail = _head;
+                    _length++;
+                    return;
+                }
+
+                QueueItem<T> linkNode = _head;
+                for(int i = 0; i < _length - 1; i++)
+                {
+                    linkNode = _head.Next;
+                }
+
                 _tail.Next = newNode;
                 _tail = newNode;
             }
 
-            length++;
+            _length++;
         }
 
         public T? dequeue()
@@ -39,7 +55,7 @@
                 return default(T);
             }
 
-            length--;
+            _length--;
 
             var head = _head;
             _head = _head.Next;
